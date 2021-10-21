@@ -26,7 +26,7 @@ def validate(request, validation_data):
         return response(405, 'Payload validation failed: Wrong method, POST expected, got %s.' % request.method, [])
 
     if request.remote.ip not in validation_data['trusted_ips']:
-        return response(403, 'Payload validation failed: Unverified remote IP: %s.' % remote_ip, [])
+        return response(403, 'Payload validation failed: Unverified remote IP: %s.' % request.remote.ip, [])
 
     try:
         payload = request.json
